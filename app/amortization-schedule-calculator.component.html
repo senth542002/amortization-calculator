@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Amortization Schedule Calculator</h1>
+  <form (ngSubmit)="calculate()" #amortizationForm="ngForm">
+
+    <div class="form-group">
+        <label for="loanAmount">Loan Amount: </label>
+        <input type="text" class="form-control" id="loanAmount" required [(ngModel)]="loanAmount" name="loanAmount"
+        #loanamount="ngModel">
+        <!-- <br>TODO: remove this: {{name.className}} -->
+          <div [hidden]="loanamount.valid || loanamount.pristine" class="alert alert-danger">
+          Loan Amount is required </div>
+    </div>
+    <div class="form-group">
+        <label for="loanTerm">Loan Term: </label>
+        <input type="text" class="form-control" id="loanTerm" required [(ngModel)]="loanTerm" name="loanTerm"
+        #loanterm="ngModel">
+
+        <div [hidden]="loanterm.valid || loanterm.pristine" class="alert alert-danger">
+          Loan Tenure is required </div>
+    </div>
+    <div class="form-group">
+        <label for="loanInterest">Interest Rate</label>
+        <input type="text" class="form-control" id="loanInterest" required [(ngModel)]="loanInterest" name="loanInterest"
+        #loaninterest="ngModel">
+
+        <div [hidden]="loaninterest.valid || loaninterest.pristine" class="alert alert-danger">
+          Loan Interest rate is required </div>
+    </div>
+    <button type="submit" class="btn btn-default" [disabled]="!amortizationForm.form.valid">Calculate</button>
+  </form>
+</div>
