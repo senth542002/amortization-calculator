@@ -1,21 +1,26 @@
 import {Component} from '@angular/core';
 import { AmortizationService } from './amortization.service';
+import { AmortizationSchedule } from './amortization-schedule';
 import { Observable }        from 'rxjs/Observable';
+import {DataTableDirectives} from 'angular2-datatable/datatable';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'amortization-schedule-calculator',
   templateUrl: 'app/amortization-schedule-calculator.component.html',
-  providers: [ AmortizationService ]
+  providers: [ AmortizationService ],
+  directives: [DataTableDirectives]
 
 })
 
 export class AmortizationScheduleCalculatorComponent{
 
-  amortizationSchedules: Observable<AmortizationSchedule[]>;
+  amortizationSchedules: AmortizationSchedule[];
   public loanAmount = 4000000;
   public loanTerm = 240;
   public loanInterest = 9.5;
   public submitted = false;
+  error: any;
 
   constructor(private amortizationService: AmortizationService){
 
@@ -23,14 +28,19 @@ export class AmortizationScheduleCalculatorComponent{
 
 calculate(){
   this.submitted =true;
-  this.amortizationSchedules = this.amortizationService.fetchAmortizationSchedule(this.loanAmount, this.loanTerm, this.loanInterest);
-  this.loanAmount = 4000000;
-  this.loanTerm = 240;
-  this.loanInterest = 9.5;
-  this.amortizationSchedules.subscribe(
-  x => console.log('onNext: %s', x),
-  e => console.log('onError: %s', e),
-  () => console.log('onCompleted'));
+  this.amortizationService.fetchAmortizationSchedule(this.loanAmount, this.loanTerm, this.loanInterest)
+  .then(schedules => this.amortizationSchedules = schedules).catch(error => this.error = error);
+
+  // alert(this.amortizationSchedules.length);
+  // alert(this.error);
+  // alert(this.amortizationSchedules);
+  // this.loanAmount = 4000000;
+  // this.loanTerm = 240;
+  // this.loanInterest = 9.5;
+  // this.amortizationSchedules.subscribe(
+  // x => console.log('onNext: %s', x),
+  // e => console.log('onError: %s', e),
+  // () => console.log('onCompleted'));
 }
 
 }

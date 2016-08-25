@@ -10,7 +10,9 @@
 
     '@angular':                   'node_modules/@angular',
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
-    'rxjs':                       'node_modules/rxjs'
+    'angular2-datatable': 'node_modules/angular2-datatable',
+    'rxjs':                       'node_modules/rxjs',
+    'lodash':                     'node_modules/lodash'
   };
 
   // packages tells the System loader how to load when no filename and/or no extension
@@ -18,6 +20,8 @@
     'app':                        { main: 'main.js',  defaultExtension: 'js' },
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
+    'angular2-datatable': { main: 'index.js', defaultExtension: 'js' },
+    'lodash': { main:'index.js', defaultExtension: 'js' }
   };
 
   var ngPackageNames = [

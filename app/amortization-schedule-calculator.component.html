@@ -1,7 +1,7 @@
 <div class="container">
+<div [hidden]="submitted">
     <h1>Amortization Schedule Calculator</h1>
   <form (ngSubmit)="calculate()" #amortizationForm="ngForm">
-
     <div class="form-group">
         <label for="loanAmount">Loan Amount: </label>
         <input type="text" class="form-control" id="loanAmount" required [(ngModel)]="loanAmount" name="loanAmount"
@@ -28,4 +28,43 @@
     </div>
     <button type="submit" class="btn btn-default" [disabled]="!amortizationForm.form.valid">Calculate</button>
   </form>
+</div>
+<!-- <div [hidden]="submitted"> -->
+  <h1>Amortization Schedule</h1>
+  <form>
+    <!-- <ul>
+      <li *ngFor="let schedule of amortizationSchedules">
+      <span>{{schedule.monthlyPrinciple}}</span> {{schedule.monthlyInterest}}
+      </li>
+    </ul> -->
+    <table class="table table-striped" [mfData]="amortizationSchedules" #mf="mfDataTable" [mfRowsOnPage]="5">
+    <thead>
+    <tr>
+        <th style="width: 20%"><mfDefaultSorter by="monthlyPayment">Monthly Payment</mfDefaultSorter></th>
+        <th style="width: 50%"><mfDefaultSorter by="monthlyInterest">Monthly Interest</mfDefaultSorter></th>
+        <th style="width: 10%"><mfDefaultSorter by="monthlyPrinciple">Monthly Principle</mfDefaultSorter></th>
+        <th style="width: 20%"><mfDefaultSorter by="outstandingPrinciple">Outstanding Principle</mfDefaultSorter></th>
+        <th style="width: 20%"><mfDefaultSorter by="numberOfTermsLeft">RemainingTerms</mfDefaultSorter></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let schedule of mf.data">
+        <td>{{schedule.monthlyPayment}}</td>
+        <td>{{schedule.monthlyInterest}}</td>
+        <td>{{schedule.monthlyPrinciple}}</td>
+        <td>{{schedule.outstandingPrinciple}}</td>
+        <td>{{schedule.numberOfTermsLeft}}</td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="5">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+    </tr>
+    </tfoot>
+</table>
+  </form>
+<!-- </div> -->
+
 </div>

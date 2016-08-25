@@ -3,5 +3,5 @@ export class AmortizationSchedule{
   monthlyInterest: string;
   monthlyPrinciple: string;
   outstandingPrinciple: string;
-  remainingTerms: string;
+  numberOfTermsLeft: string;
 }
