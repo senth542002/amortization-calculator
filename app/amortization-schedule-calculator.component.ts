@@ -30,17 +30,8 @@ calculate(){
   this.submitted =true;
   this.amortizationService.fetchAmortizationSchedule(this.loanAmount, this.loanTerm, this.loanInterest)
   .then(schedules => this.amortizationSchedules = schedules).catch(error => this.error = error);
-
-  // alert(this.amortizationSchedules.length);
-  // alert(this.error);
-  // alert(this.amortizationSchedules);
-  // this.loanAmount = 4000000;
-  // this.loanTerm = 240;
-  // this.loanInterest = 9.5;
-  // this.amortizationSchedules.subscribe(
-  // x => console.log('onNext: %s', x),
-  // e => console.log('onError: %s', e),
-  // () => console.log('onCompleted'));
 }
-
+back(){
+  this.submitted = false;
+}
 }
