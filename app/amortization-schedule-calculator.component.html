@@ -1,17 +1,17 @@
 <div class="container">
 <div [hidden]="submitted">
-    <h1>Amortization Schedule Calculator</h1>
+    <h1>Loan Amortization Calculator</h1>
   <form (ngSubmit)="calculate()" #amortizationForm="ngForm">
     <div class="form-group">
-        <label for="loanAmount">Loan Amount: </label>
-        <input type="text" class="form-control" id="loanAmount" required [(ngModel)]="loanAmount" name="loanAmount"
+        <label for="loanAmount">Loan Amount (Rupees): </label>
+        <input type="text" class="form-control" id="loanAmount" required [ngModel]="loanAmount" name="loanAmount"
         #loanamount="ngModel">
         <!-- <br>TODO: remove this: {{name.className}} -->
           <div [hidden]="loanamount.valid || loanamount.pristine" class="alert alert-danger">
           Loan Amount is required </div>
     </div>
     <div class="form-group">
-        <label for="loanTerm">Loan Term: </label>
+        <label for="loanTerm">Loan Term (months): </label>
         <input type="text" class="form-control" id="loanTerm" required [(ngModel)]="loanTerm" name="loanTerm"
         #loanterm="ngModel">
 
@@ -19,7 +19,7 @@
           Loan Tenure is required </div>
     </div>
     <div class="form-group">
-        <label for="loanInterest">Interest Rate</label>
+        <label for="loanInterest">Interest Rate (%)</label>
         <input type="text" class="form-control" id="loanInterest" required [(ngModel)]="loanInterest" name="loanInterest"
         #loaninterest="ngModel">
 
@@ -35,11 +35,11 @@
     <table class="table table-striped" [mfData]="amortizationSchedules" #mf="mfDataTable" [mfRowsOnPage]="5" border="2">
     <thead>
     <tr>
-        <th style="width: 20%"><mfDefaultSorter by="monthlyPayment">Monthly Payment</mfDefaultSorter></th>
-        <th style="width: 20%"><mfDefaultSorter by="monthlyInterest">Monthly Interest</mfDefaultSorter></th>
-        <th style="width: 20%"><mfDefaultSorter by="monthlyPrinciple">Monthly Principle</mfDefaultSorter></th>
-        <th style="width: 20%"><mfDefaultSorter by="outstandingPrinciple">Outstanding Principle</mfDefaultSorter></th>
-        <th style="width: 20%"><mfDefaultSorter by="numberOfTermsLeft">RemainingTerms</mfDefaultSorter></th>
+        <th style="width: 10%"><mfDefaultSorter by="monthlyPayment">EMI</mfDefaultSorter></th>
+        <th style="width: 10%"><mfDefaultSorter by="monthlyInterest">Interest Paid</mfDefaultSorter></th>
+        <th style="width: 10%"><mfDefaultSorter by="monthlyPrinciple">Principle Paid</mfDefaultSorter></th>
+        <th style="width: 10%"><mfDefaultSorter by="outstandingPrinciple">Balance Principle</mfDefaultSorter></th>
+        <th style="width: 10%"><mfDefaultSorter by="numberOfTermsLeft">Months Remaining</mfDefaultSorter></th>
     </tr>
     </thead>
     <tbody>

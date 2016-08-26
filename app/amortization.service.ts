@@ -9,7 +9,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AmortizationService{
   getData: string;
-  private baseUrl = 'http://amortizationservice.cfapps.io/loan';
+
+
   constructor(private http: Http) { }
 
   fetchAmortizationSchedule(loanAmount: any, loanTerm: any, loanInterest: any): Promise<AmortizationSchedule[]>{
@@ -23,7 +24,7 @@ export class AmortizationService{
     params.set('interest', loanInterest);
     params.set('term', loanTerm);
     let url = 'http://amortizationservice.cfapps.io/loan/';
-
+    //let url = 'http://localhost:8080/loan/';
     return this.http.get(url, {search: params})
     .toPromise()
     .then(response =>  response.json() as AmortizationSchedule[])
