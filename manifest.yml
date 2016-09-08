@@ -1,0 +1,5 @@
+---
+applications:
+- name: amortization-calculator
+  buildpack: staticfile_buildpack
+  memory: 256M
