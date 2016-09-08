@@ -4,7 +4,7 @@
   <form (ngSubmit)="calculate()" #amortizationForm="ngForm">
     <div class="form-group">
         <label for="loanAmount">Loan Amount (Rupees): </label>
-        <input type="text" class="form-control" id="loanAmount" required [ngModel]="loanAmount" name="loanAmount"
+        <input type="text" class="form-control" id="loanAmount" required [(ngModel)]="loanAmount" name="loanAmount"
         #loanamount="ngModel">
         <!-- <br>TODO: remove this: {{name.className}} -->
           <div [hidden]="loanamount.valid || loanamount.pristine" class="alert alert-danger">

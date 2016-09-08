@@ -16,9 +16,9 @@ import * as _ from 'lodash';
 export class AmortizationScheduleCalculatorComponent{
 
   amortizationSchedules: AmortizationSchedule[];
-  public loanAmount = 4000000;
-  public loanTerm = 240;
-  public loanInterest = 9.5;
+  public loanAmount = 0;
+  public loanTerm = 0;
+  public loanInterest = 0;
   public submitted = false;
   error: any;
 
